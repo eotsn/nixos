@@ -13,6 +13,10 @@
     EDITOR = "nvim";
   };
 
+  xresources.properties = {
+    "Xft.dpi" = 192;
+  };
+
   programs.fish = {
     enable = true;
   };
