@@ -30,6 +30,7 @@
         avy
 	keycast
 	vterm
+	treesit-grammars.with-all-grammars
       ]
     ));
   };
