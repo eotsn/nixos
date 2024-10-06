@@ -5,6 +5,8 @@
   home.username = "eotsn";
   home.homeDirectory = "/home/eotsn";
 
+  imports = [ ./emacs-vterm.nix ];
+
   home.packages = with pkgs; [
     neovim
   ];
