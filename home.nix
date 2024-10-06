@@ -23,6 +23,7 @@
       epkgs: with epkgs; [
         avy
 	keycast
+	vterm
       ]
     ));
   };
