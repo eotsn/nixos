@@ -29,6 +29,23 @@ in
       defaultEditor = true;
     };
 
+    programs.eza.enable = true;
+
+    programs.fish = {
+      enable = true;
+      plugins = [
+        {
+          name = "hydro";
+          src = pkgs.fetchFromGitHub {
+            owner = "jorgebucaran";
+            repo = "hydro";
+            rev = "75ab7168a35358b3d08eeefad4ff0dd306bd80d4";
+            sha256 = "QYq4sU41/iKvDUczWLYRGqDQpVASF/+6brJJ8IxypjE=";
+          };
+        }
+      ];
+    };
+
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager
     # release introduces backwards incompatible changes.
