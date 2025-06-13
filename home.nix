@@ -9,8 +9,25 @@ in
       (import "${home-manager}/nixos")
     ];
 
+  # Tell Home Manager to use the global pkgs that is configured via the system
+  # level nixpkgs options. This saves an extra nixpkgs evaluation.
+  home-manager.useGlobalPkgs = true;
+
   home-manager.users.erico = { pkgs, ... }: {
     home.packages = with pkgs; [ git ];
+
+    programs.emacs = {
+      enable = true;
+      package = pkgs.emacs-pgtk;
+      extraPackages = epkgs: with epkgs; [
+        treesit-grammars.with-all-grammars
+      ];
+    };
+
+    services.emacs = {
+      enable = true;
+      defaultEditor = true;
+    };
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager
