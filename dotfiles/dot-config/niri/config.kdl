@@ -1,0 +1,148 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "compose:rctrl,ctrl:nocaps"
+        }
+    }
+
+    warp-mouse-to-focus
+    // Allow focus-follows-mouse only when it will not scroll the view.
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+output "HDMI-A-2" { mode "3840x2160"; transform "normal"; scale 1.5; }
+
+layout {
+    gaps 8
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        width 2
+        active-gradient from="#33ccffee" to="#00ff99ee" angle=45
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+    }
+}
+
+// In the next release, niri will have built-in xwayland-sattelite integration.
+spawn-at-startup "xwayland-satellite"
+
+environment {
+    DISPLAY ":0"
+}
+
+// Ask clients to omit their client-side decorations is possible.
+// https://github.com/YaLTeR/niri/wiki/Xwayland
+prefer-no-csd
+
+// The path is formatted with strftime(3) to give you the screenshot date and time.
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// Window rules let you adjust behavior for individual windows.
+// Find more information on the wiki:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+
+// Enable rounded corners for all windows.
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+}
+
+binds {
+    Mod+Return { spawn "emacsclient" "-c"; }
+    Mod+Space  { spawn "fuzzel"; }
+    Mod+B      { spawn "brave"; }
+    Mod+L      { spawn "swaylock" "-f" "-c" "000000"; }
+    Mod+T      { spawn "ghostty"; }
+
+    Mod+Ctrl+Comma { spawn "env" "XDG_CURRENT_DESKTOP=GNOME" "gnome-control-center"; }
+
+    XF86AudioRaiseVolume  allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume  allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute         allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute      allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "-e4" "-n2" "set" "5%-"; }
+
+    Mod+O repeat=false { toggle-overview; }
+
+    Mod+Q { close-window; }
+
+    Mod+S { focus-column-left; }
+    Mod+D { focus-window-down; }
+    Mod+E { focus-window-up; }
+    Mod+F { focus-column-right; }
+
+    Mod+Ctrl+S { move-column-left; }
+    Mod+Ctrl+D { move-window-down; }
+    Mod+Ctrl+E { move-window-up; }
+    Mod+Ctrl+F { move-column-right; }
+
+    Mod+Home      { focus-column-first; }
+    Mod+End       { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R       { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R  { reset-window-height; }
+
+    Mod+M       { maximize-column; }
+    Mod+Shift+M { fullscreen-window; }
+
+    Mod+C      { center-column; }
+    Mod+Ctrl+C { center-visible-columns; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    Mod+W { toggle-column-tabbed-display; }
+
+    Mod+P      { screenshot; }
+    Mod+Ctrl+P { screenshot-screen; }
+    Mod+Alt+P  { screenshot-window; }
+
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Ctrl+Escape { quit; }
+}
