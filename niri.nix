@@ -8,6 +8,7 @@
     swaybg
     swayidle
     swaylock
+    wl-clipboard
     xwayland-satellite
   ];
 
