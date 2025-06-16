@@ -16,19 +16,6 @@ in
   home-manager.users.erico = { pkgs, ... }: {
     home.packages = with pkgs; [ git ];
 
-    programs.emacs = {
-      enable = true;
-      package = pkgs.emacs-pgtk;
-      extraPackages = epkgs: with epkgs; [
-        treesit-grammars.with-all-grammars
-      ];
-    };
-
-    services.emacs = {
-      enable = true;
-      defaultEditor = true;
-    };
-
     programs.eza.enable = true;
     programs.fd.enable = true;
     programs.fzf.enable = true;

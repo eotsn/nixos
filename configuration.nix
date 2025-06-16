@@ -17,6 +17,7 @@
       ./hardware-configuration.nix
       ./nvidia.nix
       ./niri.nix
+      ./emacs.nix
       ./home.nix
     ];
 
