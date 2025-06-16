@@ -65,14 +65,14 @@ window-rule {
 }
 
 binds {
-    Mod+Return { spawn "emacsclient" "-c"; }
-    Mod+Space  { spawn "fuzzel"; }
-    Mod+B      { spawn "brave"; }
-    Mod+L      { spawn "swaylock" "-f" "-c" "000000"; }
-    Mod+T      { spawn "ghostty"; }
-    Mod+Y      { spawn "ghostty" "--title=yazi" "--command=yazi"; }
+    Mod+Return  { spawn "emacsclient" "-c"; }
+    Mod+Space   { spawn "fuzzel"; }
+    Mod+B       { spawn "brave"; }
+    Super+Alt+L { spawn "swaylock" "-f" "-c" "000000"; }
+    Mod+T       { spawn "ghostty"; }
+    Mod+Y       { spawn "ghostty" "--title=yazi" "--command=yazi"; }
 
-    Mod+Ctrl+Comma { spawn "env" "XDG_CURRENT_DESKTOP=GNOME" "gnome-control-center"; }
+    Mod+Shift+S { spawn "env" "XDG_CURRENT_DESKTOP=GNOME" "gnome-control-center"; }
 
     XF86AudioRaiseVolume  allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
     XF86AudioLowerVolume  allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
@@ -85,15 +85,15 @@ binds {
 
     Mod+Q { close-window; }
 
-    Mod+S { focus-column-left; }
-    Mod+D { focus-window-down; }
-    Mod+E { focus-window-up; }
-    Mod+F { focus-column-right; }
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+L { focus-column-right; }
 
-    Mod+Ctrl+S { move-column-left; }
-    Mod+Ctrl+D { move-window-down; }
-    Mod+Ctrl+E { move-window-up; }
-    Mod+Ctrl+F { move-column-right; }
+    Mod+Ctrl+H { move-column-left; }
+    Mod+Ctrl+J { move-window-down; }
+    Mod+Ctrl+K { move-window-up; }
+    Mod+Ctrl+L { move-column-right; }
 
     Mod+Home      { focus-column-first; }
     Mod+End       { focus-column-last; }
@@ -130,8 +130,8 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R  { reset-window-height; }
 
-    Mod+M       { maximize-column; }
-    Mod+Shift+M { fullscreen-window; }
+    Mod+F       { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
 
     Mod+C      { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
@@ -153,5 +153,5 @@ binds {
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-    Mod+Ctrl+Escape { quit; }
+    Mod+Shift+E { quit; }
 }
