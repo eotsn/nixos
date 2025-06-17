@@ -96,9 +96,6 @@
     isNormalUser = true;
     description = "Eric Ottosson";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      brave
-    ];
     shell = pkgs.fish;
   };
 

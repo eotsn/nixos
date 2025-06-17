@@ -14,15 +14,25 @@ in
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.erico = { pkgs, ... }: {
-    home.packages = with pkgs; [ git ];
+    home.packages = with pkgs; [
+      git
+      nodejs_22
+      pnpm
+      unzip
+    ];
 
-    programs.eza.enable = true;
-    programs.fd.enable = true;
-    programs.fzf.enable = true;
-    programs.jq.enable = true;
-    programs.ripgrep.enable = true;
-    programs.yazi.enable = true;
-    programs.zoxide.enable = true;
+    programs.chromium = {
+      enable = true;
+      package = pkgs.brave;
+    };
+
+    programs.eza = {
+      enable = true;
+    };
+
+    programs.fd = {
+      enable = true;
+    };
 
     programs.fish = {
       enable = true;
@@ -37,6 +47,26 @@ in
           };
         }
       ];
+    };
+
+    programs.fzf = {
+      enable = true;
+    };
+
+    programs.jq = {
+      enable = true;
+    };
+
+    programs.ripgrep = {
+      enable = true;
+    };
+
+    programs.yazi = {
+      enable = true;
+    };
+
+    programs.zoxide = {
+      enable = true;
     };
 
     # This value determines the Home Manager release that your configuration is
