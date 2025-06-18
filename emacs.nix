@@ -61,6 +61,7 @@ in
           markdown-mode
           modus-themes
           move-text
+          nix-ts-mode
           orderless
           terraform-mode
           treesit-grammars.with-all-grammars
