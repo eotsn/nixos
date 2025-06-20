@@ -1,9 +1,14 @@
 font=PragmataPro 12
-background-color=#042837dd
-text-color=#ffffffff
 width=400
 margin=20
-border-color=#9ac8e0ff
 border-radius=10
 format=󰂚 <b>%s</b>\n%b
 default-timeout=5000
+
+background-color=#1e1e2e
+text-color=#cdd6f4
+border-color=#89b4fa
+progress-color=over #313244
+
+[urgency=high]
+border-color=#fab387
