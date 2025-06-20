@@ -51,6 +51,7 @@ in
           go-mode
           gptel
           helpful
+          indent-bars
           jinx
           jtsx
           lsp-mode
