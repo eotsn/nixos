@@ -1,8 +1,7 @@
-font=PragmataPro 12
+font=JetBrainsMono Nerd Font 12
 width=400
 margin=20
-border-radius=10
-format=󰂚 <b>%s</b>\n%b
+format=<b>%s</b>\n%b
 default-timeout=5000
 
 background-color=#1e1e2e

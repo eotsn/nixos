@@ -14,7 +14,7 @@ input {
 output "HDMI-A-2" { mode "3840x2160"; transform "normal"; scale 1.5; }
 
 layout {
-    gaps 8
+    gaps 10
     center-focused-column "never"
 
     preset-column-widths {
@@ -26,9 +26,13 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
+        off
+    }
+
+    border {
         width 2
         active-gradient from="#33ccffee" to="#00ff99ee" angle=45
-        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        inactive-color "#595959"
     }
 }
 
@@ -52,7 +56,6 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // Enable rounded corners for all windows.
 window-rule {
-    geometry-corner-radius 10
     clip-to-geometry true
 }
 
@@ -60,8 +63,8 @@ window-rule {
     match app-id="com.mitchellh.ghostty" title="yazi"
 
     open-floating true
-    default-column-width { proportion 0.5; }
-    default-window-height { proportion 0.5; }
+    default-column-width { proportion 0.666; }
+    default-window-height { proportion 0.666; }
 }
 
 binds {
