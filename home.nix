@@ -21,6 +21,15 @@ in
       unzip
     ];
 
+    programs.btop = {
+      enable = true;
+      settings = {
+        color_theme = "catppuccin_mocha";
+        theme_background = false;
+        vim_keys = true;
+      };
+    };
+
     programs.chromium = {
       enable = true;
       package = pkgs.brave;

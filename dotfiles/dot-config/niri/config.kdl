@@ -61,6 +61,7 @@ window-rule {
 
 window-rule {
     match app-id="com.mitchellh.ghostty" title="yazi"
+    match app-id="com.mitchellh.ghostty" title="btop"
 
     open-floating true
     default-column-width { proportion 0.666; }
@@ -73,7 +74,9 @@ binds {
     Mod+B       { spawn "brave"; }
     Super+Alt+L { spawn "swaylock" "-f" "-c" "000000"; }
     Mod+T       { spawn "ghostty"; }
-    Mod+Y       { spawn "ghostty" "--title=yazi" "--command=yazi"; }
+
+    Mod+Y            { spawn "ghostty" "--title=yazi" "--command=yazi"; }
+    Mod+Shift+Escape { spawn "ghostty" "--title=btop" "--command=btop"; }
 
     Mod+Shift+S { spawn "env" "XDG_CURRENT_DESKTOP=GNOME" "gnome-control-center"; }
 
