@@ -13,6 +13,11 @@
   ];
 
   programs.niri.enable = true;
+  programs.waybar.enable = true;
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
 
   systemd.user.services.swaybg = {
     description = "Wallpaper tool for Wayland compositors";
