@@ -2,14 +2,15 @@
 
 let
   overrides = final: prev: {
-    lsp-mode = (
-      prev.lsp-mode.overrideAttrs (
-        f: p: {
-          buildPhase = ''
-            export LSP_USE_PLISTS=true
-          '' + p.buildPhase;
-        }
-      )
+    lsp-bridge = (
+      prev.lsp-bridge.overrideAttrs (old: {
+        src = pkgs.fetchFromGitHub {
+          owner = "manateelazycat";
+          repo = "lsp-bridge";
+          rev = "b3e1e6fba2d0ca7602a63e09943a8c73cc9430af";
+          hash = "sha256-K2OeD4N2P/gNOoOnEyA3nPJC8M6GUcAUYS2TzbScPSA=";
+        };
+      })
     );
   };
 in
@@ -21,12 +22,10 @@ in
   ];
 
   environment.systemPackages = with pkgs; [
-    emacs-lsp-booster
+    typescript-language-server
+    tailwindcss-language-server
+    vscode-langservers-extracted
   ];
-
-  environment.sessionVariables = {
-    LSP_USE_PLISTS = "true";
-  };
 
   services.emacs = {
     enable = true;
@@ -39,14 +38,12 @@ in
           avy
           cape
           consult
-          corfu
           diff-hl
           dockerfile-mode
           eat
           embark
           embark-consult
           expand-region
-          flycheck
           forge
           go-mode
           gptel
@@ -54,9 +51,7 @@ in
           indent-bars
           jinx
           jtsx
-          lsp-mode
-          lsp-tailwindcss
-          lsp-ui
+          lsp-bridge
           magit
           marginalia
           markdown-mode
