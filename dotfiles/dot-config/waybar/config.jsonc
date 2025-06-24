@@ -10,6 +10,7 @@
     "clock"
   ],
   "modules-right": [
+    "idle_inhibitor",
     "network",
     "cpu",
     "memory",
@@ -23,6 +24,13 @@
     "format-icons": {
       "active": "",
       "default": ""
+    }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
     }
   },
   "network": {
@@ -58,6 +66,7 @@
       "critical": 15
     },
     "format": "{capacity}% {icon}",
+    "format-plugged": "{capacity}% ",
     "format-icons": {
       "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
       "discharging": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]

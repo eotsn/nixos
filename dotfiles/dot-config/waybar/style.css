@@ -35,7 +35,7 @@ tooltip label {
     box-shadow: none;
 }
 
-#battery, #clock, #network {
+#battery, #clock, #network, #idle_inhibitor {
     padding: 0 10px;
 }
 
