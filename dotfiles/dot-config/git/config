@@ -2,5 +2,8 @@
 	email = "noreply@eotsn.com"
 	name = "Eric Ottosson"
 
+[github]
+	user = eotsn
+
 [includeif "gitdir:~/work/"]
 	path = "~/work/.gitconfig"
