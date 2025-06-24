@@ -60,10 +60,12 @@ in
           magit
           marginalia
           markdown-mode
+          minions
           modus-themes
           move-text
           nix-ts-mode
           orderless
+          perspective
           terraform-mode
           treesit-grammars.with-all-grammars
           vertico
