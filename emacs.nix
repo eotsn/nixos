@@ -32,15 +32,13 @@ in
     enable = true;
     defaultEditor = true;
     package = with pkgs; (
-      ((emacsPackagesFor emacs-unstable-pgtk).overrideScope overrides).withPackages (
+      ((emacsPackagesFor emacs-git-pgtk).overrideScope overrides).withPackages (
         epkgs: with epkgs; [
-          aidermacs
           apheleia
           avy
           cape
           consult
           corfu
-          diff-hl
           dockerfile-mode
           eat
           embark
@@ -51,19 +49,16 @@ in
           go-mode
           gptel
           helpful
-          indent-bars
           jinx
-          jtsx
           lsp-mode
           lsp-tailwindcss
           lsp-ui
           magit
           marginalia
           markdown-mode
-          minions
           modus-themes
           move-text
-          nix-ts-mode
+          nix-mode
           orderless
           perspective
           terraform-mode
