@@ -1,10 +1,16 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   overrides = final: prev: {
     lsp-mode = (
       prev.lsp-mode.overrideAttrs (
         f: p: {
+          # https://emacs-lsp.github.io/lsp-mode/page/performance/#use-plists-for-deserialization
           buildPhase = ''
             export LSP_USE_PLISTS=true
           '' + p.buildPhase;
@@ -24,6 +30,7 @@ in
     emacs-lsp-booster
   ];
 
+  # https://emacs-lsp.github.io/lsp-mode/page/performance/#use-plists-for-deserialization
   environment.sessionVariables = {
     LSP_USE_PLISTS = "true";
   };
@@ -32,7 +39,7 @@ in
     enable = true;
     defaultEditor = true;
     package = with pkgs; (
-      ((emacsPackagesFor emacs-git-pgtk).overrideScope overrides).withPackages (
+      ((emacsPackagesFor emacs-unstable-pgtk).overrideScope overrides).withPackages (
         epkgs: with epkgs; [
           apheleia
           avy
@@ -62,11 +69,14 @@ in
           orderless
           perspective
           terraform-mode
-          treesit-grammars.with-all-grammars
           vertico
           wgrep
           yaml-mode
           yasnippet
+
+          # https://wiki.nixos.org/wiki/Emacs#Tree-sitter
+          treesit-grammars.with-all-grammars
+          tree-sitter-langs
         ]
       )
     );
